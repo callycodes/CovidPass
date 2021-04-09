@@ -19,7 +19,9 @@ Interface allowing a persons to search up the details of another person, retriev
 
 ## Database Structure
 **users**<br>
-firstName *string*<br>
+firstName *(string)*<br>
+lastName *(string)*<br>
+dateOfBirth *(date)*<br>
 
 ## Features
 
