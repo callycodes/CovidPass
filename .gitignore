@@ -3,3 +3,9 @@ frontend/package-lock.json
 .DS_Store
 frontend/covidpassfrontend/package-lock.json
 frontend/covidpassfrontend/.browserslistrc
+
+covidpassbackend/.vs/*
+covidpassbackend/bin/*
+covidpassbackend/Migrations/*
+covidpassbackend/obj/*
+covidpassbackend/
