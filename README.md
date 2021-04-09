@@ -17,6 +17,9 @@ Provides an interface to be able to log a persons recent vaccine or covid test a
 **Scan** (Theoretically only for border controls, government bodies to be able to use)
 Interface allowing a persons to search up the details of another person, retrieving their information, test and vaccine information. Would contain an option to connect to a camera to scan a qr code.
 
+## Database Structure
+**users**<br>test
+
 ## Features
 
 ## Roles
