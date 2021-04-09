@@ -19,9 +19,25 @@ Interface allowing a persons to search up the details of another person, retriev
 
 ## Database Structure
 **users**<br>
+id *(PK)(int)*<br>
+uid *(PK)(string)*<br>
 firstName *(string)*<br>
 lastName *(string)*<br>
 dateOfBirth *(date)*<br>
+
+**tests**<br>
+id *(PK)(int)*<br>
+userId *(FK)(int)*<br>
+type *(string)*<br>
+result *(bool)*<br>
+dateOfTest *(date)*<br>
+
+**vaccines**<br>
+id *(PK)(int)*<br>
+userId *(FK)(int)*<br>
+type *(string)*<br>
+count *(int)*<br>
+dateOfVaccine *(date)*<br>
 
 ## Features
 
