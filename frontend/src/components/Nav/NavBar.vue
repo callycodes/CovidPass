@@ -1,5 +1,10 @@
 <template>
   <div id="navbar">
+
+    <div class="exit-button">
+      <slot></slot>
+    </div>
+
     <h1 class="dela logo">
       CovidPass
     </h1>
@@ -141,6 +146,17 @@ a:active {
   box-shadow: none;
   font-size: 20px;
   margin-bottom: 5px;
+}
+
+#profile button:hover {
+  color: var(--nickel);
+  background-color: var(--jet);
+}
+
+.exit-button {
+  position: absolute;
+  top: 10px;
+  right: 5px;
 }
 
 </style>
