@@ -9,8 +9,7 @@ Not much purpose to the page other than informative, explanation on the purpose 
 Page where you can change settings in your profile, in real usage, this would be read-only and would be set up when you get your first covid test/vaccination as it  essentially provides identifying information.
 
 **Passport**
-![Image of Passport Page]
-(https://i.imgur.com/WgRs1yn.png)
+![Image of Passport Page](https://i.imgur.com/WgRs1yn.png)
 QR Code page - simple show and scan and this can be used to immediately link your profile to a scannable qr.
 
 **Log Vaccine/Tests** (Theoretically only for GP's, Hospitals, Vaccination Centres to be able to use)
