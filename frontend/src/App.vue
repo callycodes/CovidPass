@@ -1,20 +1,55 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="menu-button">
+      <v-icon
+        scale="3"
+        name="fc-menu"
+      />
     </div>
-    <router-view />
+
+    <NavBar id="navbar" />
+    
+    <router-view id="page" />
   </div>
 </template>
 
+<script lang="ts">
+import Vue from "vue"
+import NavBar from "./components/Nav/NavBar.vue";
+
+
+export default Vue.extend({
+  components: {
+    NavBar
+  }
+
+});
+
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+#menu-button {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  width: 80px;
+  height: 80px;
+  background-color: var(--jet);
+  border-radius: 10px;
+  color: var(--nickel);
+  font-size: 10px;
   text-align: center;
-  color: #2c3e50;
+  line-height: 115px;
+}
+
+#app {
+  margin-left: 250px;
+  transition: transform 1s;
+}
+
+#page {
+  padding: 10px;
 }
 
 #nav {

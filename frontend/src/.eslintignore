@@ -4,3 +4,7 @@ node_modules
 dist
 # don't lint nyc coverage output
 coverage
+
+babel.config.js
+
+tsconfig.json

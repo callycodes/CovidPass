@@ -1,0 +1,29 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --jet: #1d3557;
+  --pale-silver: #f1faee;
+  --nickel: #457b9d;
+}
+
+.dela {
+  font-family: 'Dela Gothic One', cursive;
+}
+
+.roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+body {
+  background-color: var(--pale-silver);
+}
