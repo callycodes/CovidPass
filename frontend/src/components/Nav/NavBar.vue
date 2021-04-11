@@ -103,9 +103,9 @@ export default Vue.extend({
 ul li {
   color: white;
   font-weight: 700;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 25px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   list-style-type: none;
 }
 

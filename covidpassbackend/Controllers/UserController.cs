@@ -17,6 +17,8 @@ namespace covidpassbackend.Controllers
         [HttpPost]
         async public Task<ActionResult> Add(User user)
         {
+
+            Console.WriteLine("Has request with: " + user.Email + ":" + user.Password);
             ICollection<User> users = await _context.Users.Where(u => u.Email == user.Email).ToListAsync();
             if (users.Count() > 0)
             {
@@ -30,10 +32,32 @@ namespace covidpassbackend.Controllers
             return Accepted();
         }
 
+        [HttpPut("{uid}")]
+        public async Task<ActionResult> PutUser(User user)
+        {
+            if (user.Uid == "")
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(user).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
         [HttpPost("authenticate", Name = "Authenticate")]
         async public Task<ActionResult<User>> Authenticate([FromBody] UserAuthenticate data)
         {
-            ICollection<User> users = await _context.Users.Where(u => u.Email == data.Email && u.Password == data.Password).ToListAsync();
+            ICollection<User> users = await _context.Users.Where(u => u.Email.Equals(data.Email) && u.Password.Equals(data.Password)).ToListAsync();
             if (users.Count() == 0)
             {
                 return NotFound();

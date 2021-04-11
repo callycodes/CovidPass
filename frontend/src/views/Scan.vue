@@ -23,7 +23,8 @@
     </h3>
 
     <button class="dela" @click="toggleShow()">Show Result</button>
-    <span class="result-text" v-if="showResult">{{val}}</span>
+    <br>
+    <span class="result-text dela" v-if="showResult">Name: {{val.FirstName}} {{val.LastName}}<br>Tests: {{val.Tests.length}}<br>Vaccines: {{val.Vaccines.length}}</span>
   </div>
 </template>
 
@@ -79,12 +80,12 @@ export default Vue.extend({
       });
 
       //If person has had a positive result in last 30 days.
-      this.val.Tests.forEach(function(test:TestModel) {
-        console.log('Testing: ' + test.Id);
-        if (this.isRecentPositive(test.Result, test.DateOfTest)) {
+      for (let i = 0; i < this.val.Tests.length; i++) {
+        let test = this.val.Tests[i] as TestModel;
+        if (this.isRecentPositive(test.Result, test.DateOfTest.toString())) {
           access = false;
         }
-      }, this)
+      }
 
       //If user has not had both vaccines.
       if (this.val.Vaccines.length < 2) {
@@ -103,7 +104,6 @@ export default Vue.extend({
     isRecentPositive(result: boolean, dateOfTest: string): boolean {
     let today = new Date();
       var difference = (Math.abs(today.getTime() - Date.parse(dateOfTest)) / (1000 * 60 * 60 * 24));
-      console.log('Difference is: ' + difference);
       if (result && difference < 30) {
         return true;
       }

@@ -1,3 +1,6 @@
+import TestModel from './TestModel';
+import VaccineModel from './VaccineModel';
+
 export default class UserModel {
   Id: number;
   Uid: string;
@@ -6,6 +9,8 @@ export default class UserModel {
   DateOfBirth: Date;
   Password: string;
   Email: string;
+  Tests: Array<TestModel>;
+  Vaccines: Array<VaccineModel>;
 
   constructor() {
     this.Id = 0;
@@ -15,5 +20,7 @@ export default class UserModel {
     this.DateOfBirth = new Date();
     this.Password = "";
     this.Email = "";
+    this.Tests = new Array<TestModel>();
+    this.Vaccines = new Array<VaccineModel>();
   }
 }
