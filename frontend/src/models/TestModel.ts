@@ -13,13 +13,4 @@ export default class TestModel {
     this.DateOfTest = new Date();
   }
 
-  isRecentPositive(): boolean {
-    let today = new Date();
-    var difference = (Math.abs(today.getTime() - this.DateOfTest.getTime())) / (1000 * 60 * 60 * 24);
-    if (this.Result && difference < 30) {
-      return true;
-    }
-    return false;
-  }
-
 }

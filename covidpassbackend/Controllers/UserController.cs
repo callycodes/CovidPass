@@ -56,10 +56,10 @@ namespace covidpassbackend.Controllers
                 return NotFound();
             }
 
-            ICollection<Test> tests = await _context.Tests.Where(t => t.UserId == user.Id).ToListAsync();
+            ICollection<Test> tests = await _context.Tests.Where(t => t.UserId == user.Uid).ToListAsync();
             user.Tests = tests;
 
-            ICollection<Vaccine> vaccines = await _context.Vaccines.Where(t => t.UserId == user.Id).ToListAsync();
+            ICollection<Vaccine> vaccines = await _context.Vaccines.Where(t => t.UserId == user.Uid).ToListAsync();
             user.Vaccines = vaccines;
 
             return Ok(user);
@@ -75,10 +75,10 @@ namespace covidpassbackend.Controllers
                 return NotFound();
             }
 
-            ICollection<Test> tests = await _context.Tests.Where(t => t.UserId == user.Id).ToListAsync();
+            ICollection<Test> tests = await _context.Tests.Where(t => t.UserId == user.Uid).ToListAsync();
             user.Tests = tests;
 
-            ICollection<Vaccine> vaccines = await _context.Vaccines.Where(t => t.UserId == user.Id).ToListAsync();
+            ICollection<Vaccine> vaccines = await _context.Vaccines.Where(t => t.UserId == user.Uid).ToListAsync();
             user.Vaccines = vaccines;
 
             return Ok(user);

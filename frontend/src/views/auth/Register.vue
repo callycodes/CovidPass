@@ -23,7 +23,6 @@
       <h4 class="dela">Date of Birth</h4>
       <Datepicker v-model="dob"></Datepicker>
 
-      {{dob}}
       <button class="dela" @click="register">Register</button>
     </div>
   </div>

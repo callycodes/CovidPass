@@ -3,7 +3,7 @@ import VaccineModel from "@/models/VaccineModel";
 
 class VaccineService {
 
-  async login(vaccine: VaccineModel) {
+  async add(vaccine: VaccineModel) {
     try {
       return await http.post("/vaccine", vaccine);
     } catch (e) {

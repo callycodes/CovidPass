@@ -3,7 +3,7 @@ import TestModel from "@/models/TestModel";
 
 class TestService {
 
-  async login(test: TestModel) {
+  async add(test: TestModel) {
     try {
       return await http.post("/test", test);
     } catch (e) {

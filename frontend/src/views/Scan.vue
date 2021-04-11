@@ -21,6 +21,9 @@
       <span v-if="result == 'allowed'">Allowed: {{val.FirstName}}</span>
       <span v-else>Not Allowed: {{val.FirstName}}</span>
     </h3>
+
+    <button class="dela" @click="toggleShow()">Show Result</button>
+    <span class="result-text" v-if="showResult">{{val}}</span>
   </div>
 </template>
 
@@ -41,10 +44,14 @@ export default Vue.extend({
       state: "",
       result: "",
       cool: "",
-      val: new UserModel()
+      val: new UserModel(),
+      showResult: false
     }
   },
   methods: {
+    toggleShow() {
+      this.showResult = !this.showResult;
+    },
     getName(): string {
       return this.val.FirstName;
     },
@@ -73,10 +80,11 @@ export default Vue.extend({
 
       //If person has had a positive result in last 30 days.
       this.val.Tests.forEach(function(test:TestModel) {
-        if (test.isRecentPositive()) {
+        console.log('Testing: ' + test.Id);
+        if (this.isRecentPositive(test.Result, test.DateOfTest)) {
           access = false;
         }
-      })
+      }, this)
 
       //If user has not had both vaccines.
       if (this.val.Vaccines.length < 2) {
@@ -90,6 +98,16 @@ export default Vue.extend({
       }
       
       this.state = "";
+    },
+
+    isRecentPositive(result: boolean, dateOfTest: string): boolean {
+    let today = new Date();
+      var difference = (Math.abs(today.getTime() - Date.parse(dateOfTest)) / (1000 * 60 * 60 * 24));
+      console.log('Difference is: ' + difference);
+      if (result && difference < 30) {
+        return true;
+      }
+      return false;
     },
 
     getUid(): string {
@@ -119,6 +137,10 @@ div {
 
 .result {
   text-align: center;
+}
+
+.result-text {
+  font-size: 15px;
 }
 
 .pending {
