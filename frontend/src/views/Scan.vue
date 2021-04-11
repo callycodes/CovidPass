@@ -4,7 +4,6 @@
       Scan QR Code
     </h3>
     
-    <p>{{ get() }}</p>
     <QrcodeStream @decode="onDecode">
       <div
         v-if="state == 'pending'"
@@ -19,8 +18,8 @@
       v-if="result != ''"
       :class="[result == 'allowed' ? 'allowed' : 'not-allowed', 'dela', 'result']"
     >
-      <span v-if="result == 'allowed'">Allowed</span>
-      <span v-else>Not Allowed</span>
+      <span v-if="result == 'allowed'">Allowed: {{val.FirstName}}</span>
+      <span v-else>Not Allowed: {{val.FirstName}}</span>
     </h3>
   </div>
 </template>
@@ -29,6 +28,7 @@
 import Vue from 'vue';
 import { storeModule } from "../store/StoreModule";
 import UserModel from "../models/UserModel";
+import TestModel from "../models/TestModel";
 import { QrcodeStream } from "vue-qrcode-reader";
 import UserService from '../api/UserService'
 
@@ -45,6 +45,9 @@ export default Vue.extend({
     }
   },
   methods: {
+    getName(): string {
+      return this.val.FirstName;
+    },
     set(): void {
       let user:UserModel = new UserModel();
       user.FirstName = this.cool;
@@ -64,7 +67,21 @@ export default Vue.extend({
     async getResult(decoded: string) {
       let access = true;
 
-      console.log(await UserService.getByUid(decoded));
+      await UserService.getByUid(decoded).then(user => {
+        this.val = user.data;
+      });
+
+      //If person has had a positive result in last 30 days.
+      this.val.Tests.forEach(function(test:TestModel) {
+        if (test.isRecentPositive()) {
+          access = false;
+        }
+      })
+
+      //If user has not had both vaccines.
+      if (this.val.Vaccines.length < 2) {
+        access = false;
+      }
 
       if (access) {
         this.result = "allowed";

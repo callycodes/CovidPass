@@ -7,9 +7,13 @@ class UserService {
     return http.get(`/user/GetByUid/${uid}`);
   }
 
-  register(data: UserModel) {
-
-    return http.post("/user", data);
+  async register(data: UserModel) {
+    try {
+      return await http.post("/user", data);
+    } catch (e) {
+      let response = {data: "error"}
+      return response;
+    }
   }
 
   update(user: UserModel) {

@@ -41,6 +41,7 @@ export default Vue.extend({
       } else {
         let user = response.data as UserModel;
         storeModule.setUser(user);
+        this.$router.push('/')
       }
     }
   }

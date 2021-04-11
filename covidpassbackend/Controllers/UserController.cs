@@ -15,8 +15,16 @@ namespace covidpassbackend.Controllers
         private readonly CovidPassContext _context = new CovidPassContext();
 
         [HttpPost]
-        public ActionResult Add(User user)
+        async public Task<ActionResult> Add(User user)
         {
+            ICollection<User> users = await _context.Users.Where(u => u.Email == user.Email).ToListAsync();
+            if (users.Count() > 0)
+            {
+                return NotFound();
+            }
+
+            Guid uid = Guid.NewGuid();
+            user.Uid = uid.ToString();
             _context.Users.Add(user);
             _context.SaveChanges();
             return Accepted();
@@ -25,9 +33,7 @@ namespace covidpassbackend.Controllers
         [HttpPost("authenticate", Name = "Authenticate")]
         async public Task<ActionResult<User>> Authenticate([FromBody] UserAuthenticate data)
         {
-            Console.WriteLine("looking for: " + data.Email + ":" + data.Password);
             ICollection<User> users = await _context.Users.Where(u => u.Email == data.Email && u.Password == data.Password).ToListAsync();
-            Console.WriteLine(users.Count());
             if (users.Count() == 0)
             {
                 return NotFound();

@@ -27,7 +27,7 @@ export default Vue.extend({
     
     getQRValue(): string {
       console.log(storeModule.user);
-      return storeModule.getUser.uid || storeModule.getUser.Uid;
+      return storeModule.getUser.Uid;
     }
   }
 });

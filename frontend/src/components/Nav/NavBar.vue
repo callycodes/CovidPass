@@ -73,7 +73,7 @@ export default Vue.extend({
       return storeModule.isLoggedIn;
     },
     getName(): string {
-      return storeModule.getUser.firstName;
+      return storeModule.getUser.FirstName;
     }
   }
 });
