@@ -1,5 +1,5 @@
 # CovidPass
- Covid vaccine and test history tracker, theoretical platform to determine if a person should be travelling by countries border controls. Dotnet core API and Vue.js, Typescript front-end.
+ Covid vaccine and test history tracker, theoretical platform to determine if a person should be travelling busing test and vaccine results, could be used by businesses, the government, border controls, police etc. Dotnet core API and Vue.js, Typescript front-end.
 
 ## Pages
 **Home**
