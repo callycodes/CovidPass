@@ -1,4 +1,7 @@
 # CovidPass
+
+![Image of Logo](https://i.imgur.com/mEJksia.jpg)
+
  Covid vaccine and test history tracker, theoretical platform to determine if a person should be travelling busing test and vaccine results, could be used by businesses, the government, border controls, police etc. Dotnet core API and Vue.js, Typescript front-end.
 
 ## Pages
